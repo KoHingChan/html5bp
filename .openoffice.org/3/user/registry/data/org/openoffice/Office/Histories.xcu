@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:name="Histories" oor:package="org.openoffice.Office">
+ <node oor:name="Histories">
+  <node oor:name="URLHistory">
+   <node oor:name="ItemList">
+    <node oor:name="file:///tmp/Penn.docx" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 2007 XML</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>Penn</value>
+     </prop>
+    </node>
+    <node oor:name="file:///tmp/Standing%20Assignment%205.docx" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 2007 XML</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>Standing Assignment 5</value>
+     </prop>
+    </node>
+    <node oor:name="file:///tmp/annotated%20bib.docx" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 2007 XML</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>annotated bib</value>
+     </prop>
+    </node>
+    <node oor:name="file:///tmp/Standing%20Assignment%207.docx" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 2007 XML</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>Standing Assignment 7</value>
+     </prop>
+    </node>
+    <node oor:name="file:///tmp/anbib3.docx" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 2007 XML</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>anbib3</value>
+     </prop>
+    </node>
+    <node oor:name="file:///tmp/first%20draft.doc" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 97</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>first draft</value>
+     </prop>
+    </node>
+    <node oor:name="file:///tmp/Lyrics.docx" oor:op="replace">
+     <prop oor:name="Filter" oor:type="xs:string">
+      <value>MS Word 2007 XML</value>
+     </prop>
+     <prop oor:name="Password" oor:type="xs:string">
+      <value/>
+     </prop>
+     <prop oor:name="Title" oor:type="xs:string">
+      <value>Lyrics</value>
+     </prop>
+    </node>
+   </node>
+   <node oor:name="OrderList">
+    <node oor:name="0" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/Lyrics.docx</value>
+     </prop>
+    </node>
+    <node oor:name="1" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/first%20draft.doc</value>
+     </prop>
+    </node>
+    <node oor:name="2" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/anbib3.docx</value>
+     </prop>
+    </node>
+    <node oor:name="3" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/Standing%20Assignment%207.docx</value>
+     </prop>
+    </node>
+    <node oor:name="4" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/annotated%20bib.docx</value>
+     </prop>
+    </node>
+    <node oor:name="5" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/Standing%20Assignment%205.docx</value>
+     </prop>
+    </node>
+    <node oor:name="6" oor:op="replace">
+     <prop oor:name="HistoryItemRef" oor:type="xs:string">
+      <value>file:///tmp/Penn.docx</value>
+     </prop>
+    </node>
+   </node>
+  </node>
+ </node>
+</oor:component-data>

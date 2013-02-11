@@ -1,0 +1,147 @@
+.header{
+}
+
+html{
+    
+}
+
+img{
+    max-width: 80%;
+}
+
+.homeimg{
+    max-width: 300px;
+    max-height: 200px;
+    border-color: green;
+    border: 1px dashed;
+}
+
+body{
+    background-color: #5B74A6;
+}
+
+table{
+    
+}
+
+.horizontalmenu{
+    list-style-type: none;
+}
+
+.horizontalmenu a{
+    font-weight: bold;
+    text-align: center;
+    background-color: #0243A0;
+    border: 1px solid;
+}
+
+.verticalmenu{
+    list-style-type: none;
+}
+
+.verticalmenu a:link, a:visited{
+
+}
+
+.verticalmenu a:hover, a:active{
+
+}
+
+blockquote{
+    font-family: "verdana";
+    font-style: italic;
+    font-weight: lighter;
+}
+
+/*wrapper*/
+#project2{
+    border: 3px dotted;
+}
+
+#banner{
+    background-color: #26488C;
+    font-size: 72px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    color: #F24405;
+}
+
+.clicky{
+    border-color: green;
+    border: 2px solid;
+}
+
+#primary_links{
+    background-color: #26488C;    
+}
+
+a:link{
+    color: aquamarine;
+    text-decoration: underline;
+}
+
+a:active{
+    color: #F24405;
+    text-decoration: underline;
+}
+
+a:visited{
+    color: #F24405;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: #ff0000;
+    text-decoration: overline;
+}
+
+/*class that contains left, center, right*/
+#rect1{
+    
+}
+
+#left{
+    background-color: #26488C;
+    color: #F2509C;
+    font-family: georgia;
+    font-size: 12;
+    line-height: 18px;
+    text-align: center;
+}
+
+#center{
+    background-color: #2c6ed5;
+    color: #F2509C;
+}
+
+#center{
+    font-size: 15;
+    font-family: georgia;
+    line-height: 24px;
+}
+
+#table1{
+    border: 1px solid;
+}
+
+.header_row{
+    background-color: cyan;
+    border: 1px solid;
+}
+
+.even_row{
+    background-color: green;
+}
+
+.odd_row{
+    background-color: red;
+}
+
+#right{
+    background-color: #26488C;
+}
+
+#footer{
+    background-color: #26488C;
+}

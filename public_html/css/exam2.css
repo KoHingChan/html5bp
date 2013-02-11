@@ -1,0 +1,61 @@
+/*Ko Hing Chan IS 117*/
+
+#wrapper{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: blanchedalmond;
+    min-height: 1000px;
+    overflow: hidden;
+    padding-left: 32px; /*square root of the whole 1024 container that includes the viewing area and the content*/
+    padding-right: 32px;/*same as above*/
+}
+
+#banner{
+    height: 118px; /*takes the height of the rectangle and partitions it into the golden
+    ratio by taking 593-593/phi where phi=1.618*/
+    background-color: blue;
+}
+
+#menu{
+    background-color: orange;
+    height: 20px; /*negligible difference in the menu with the golden ratio compensated by the fact that the
+    content will run off the page and what is seen is "Above the Fold"*/
+}
+
+.horizontalmenu{
+    display: inline;
+    
+}
+
+.horizontalmenu li{
+    display: inline;
+}
+
+#left{
+    min-height: 477px; /*min-height is adjusted to be the golden ratio of the total rectangle containing the
+    banner and is min-height to adjust to the content (which is the exam)*/
+    width: 593px; /*about 960/phi where phi=1.618*/
+    float: left;
+    background-color: red;
+}
+
+#kuler{
+    /*exhibits the golden ratio shortcut of the 3:5 ratio*/
+    width: 500px;
+    height: 300px;
+    padding-left: 46px;
+}
+
+#right{
+    min-height: 477px; /*same specifications as in #left*/
+    width: 367px;
+    float: left;
+    background-color: green;
+}
+
+#footer{
+    background-color: yellow;
+    width: 960px;
+    height: 118px;
+}

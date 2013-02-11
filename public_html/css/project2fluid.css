@@ -1,0 +1,118 @@
+.header{
+    background-color: cyan;
+    border: 1px solid;
+}
+
+#first_odd_row{
+    clear:both;
+}
+
+#first_even_row{
+    clear:both;
+}
+.even_row{
+    background-color: green;
+    width: auto;
+}
+
+
+.odd_row{
+    background-color: red;
+    width: auto;
+}
+
+/*take off height and width from others because the wrapper contains it, only the subsections will need specifications*/
+
+#project2{
+    max-width: 960px;
+    max-height:1260px;
+    height: auto;
+    border: 1px solid;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+    
+}
+
+#banner{
+    height: 100px;
+    background-color: red;
+    padding: 5px;
+}
+
+#primary_links{
+    height: 20px;
+    background-color: blue;
+    padding: 5px;
+}
+
+.horizontalmenu ul{
+    line-height: 20px;
+    display: inline;
+}
+
+.horizontalmenu li{
+    display:inline;
+}
+
+#secondary_links{
+    height: 20px;
+    background-color: green;
+    padding: 5px;
+
+}
+
+#rect1{
+    width: auto;
+    height:auto;
+    background: aquamarine;
+}
+
+
+.sbs1{
+    padding: 5px;
+    height: auto;
+    padding-bottom: 32767px !important;
+    margin-bottom: -32767px !important;
+    overflow: hidden;
+}
+
+
+#left{
+    width: 230px;
+    float:left;
+    background-color: aquamarine;
+}
+
+#center{
+    width:470px;
+    float:left;
+    background-color: indigo;
+    overflow: hidden;
+}
+
+#galilei{
+    font-family: "verdana";
+    font-style: italic;
+}
+
+#table1{
+    border: 1px solid;
+    border-style: solid;
+    height: auto;
+    width: 460px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#right{
+    width:230px;
+    float:left;
+    background-color: brown;
+}
+
+#footer{
+    height: 100px;
+    clear:left;
+    background-color:yellow;
+}

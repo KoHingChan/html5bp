@@ -1,0 +1,134 @@
+html{
+    
+}
+
+body{  
+    
+}
+
+table{
+    
+}
+
+.horizontalmenu{
+    list-style-type: none;
+}
+
+.horizontalmenu a{
+    font-weight: bold;
+    text-decoration: none;
+    background-color: DeepSkyBlue;
+    color: white;
+    border-right: 1px inset;
+}
+
+.verticalmenu{
+    list-style-type: none;
+}
+
+.verticalmenu a:link, a:visited{
+    display:block;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: DeepSkyBlue;
+    text-align: center;
+    text-decoration: none;
+    text-transformation: uppercase;
+}
+
+.verticalmenu a:hover, a:active{
+    background-color: DodgerBlue;
+}
+
+blockquote{
+    font-family: "verdana";
+    font-style: italic;
+    font-weight: lighter;
+}
+
+/*wrapper*/
+#project2{
+    /*border: 1px solid;*/
+}
+
+#banner{
+    background-color: red;
+    font-size: 90px;
+    text-align: left;
+    text-indent: 5px;
+}
+
+#primary_links{
+    background-color:blue;
+    text-align: center;
+    
+}
+
+#secondary_links{
+    background-color:orange;
+    text-align: center;
+}
+
+a:link{
+    color: #000000;
+    text-decoration: underline;
+}
+
+a:active{
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+a:visited{
+    color: #008000;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: #ff0000;
+    text-decoration: none;
+}
+
+/*class that contains left, center, right*/
+#rect1{
+    
+}
+
+#left{
+    background-color: aquamarine;
+}
+
+#center{
+    background-color: indigo;
+}
+
+#center{
+    font-size: 15;
+    font-family: georgia;
+    line-height: 24px;
+}
+
+#table1{
+    border: 1px solid;
+}
+
+.header_row{
+    background-color: cyan;
+    border: 1px solid;
+}
+
+.even_row{
+    background-color: green;
+}
+
+.odd_row{
+    background-color: red;
+}
+
+#right{
+    background-color: brown;
+}
+
+#footer{
+    background-color: yellow;
+}

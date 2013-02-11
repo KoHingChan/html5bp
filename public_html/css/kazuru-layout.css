@@ -1,0 +1,99 @@
+html{
+
+}
+
+body{
+    
+}
+
+#project2{
+    width: 960px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+
+#banner{
+    height: 247px;
+    padding: 20px;
+}
+
+#primary_links{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.horizontalmenu{
+    line-height: 2em;
+    display: inline;
+}
+
+.horizontalmenu a{
+    float:left;
+    height: 2em;
+    width: 19.8%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.horizontalmenu li{
+    display:inline;
+}
+
+.verticalmenu{
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.verticalmenu a:link, a:visited{
+    width: 6em;
+    padding: .2em .6em;
+}
+
+#secondary_links{
+    height: 20px;
+    padding: 5px;
+
+}
+
+#rect1{
+    width: auto;
+    height:auto;
+}
+
+.sbs1{
+    min-height: 777px;
+    padding-bottom: 32767px !important;
+    margin-bottom: -32767px !important;
+    overflow: hidden;
+}
+
+
+#left{
+    width: 36%;
+    float:left;
+}
+
+#right{
+    width: 0;
+    float:left;
+}
+
+#center{
+    width:64%;
+    float:left;
+    overflow: hidden;
+}
+
+.table{
+    
+}
+#footer{
+    
+}

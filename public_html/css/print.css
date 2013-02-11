@@ -1,0 +1,37 @@
+/*tailored for old people reading*/
+/*maximize content and minimize peripherals*/
+
+#banner{
+    font-size: 20px;
+}
+
+body{
+    font-weight: bold;
+}
+
+#center{
+    font-size: 19pt;
+    line-height: 31;
+}
+
+#project2{
+    border: none;
+}
+
+#left{
+    width: 70px;
+    font-size:10px;
+}
+
+#right{
+    width: 70px;
+    font-size:10px;
+}
+
+#primary_links{
+    font-size: 10px;
+}
+
+#secondary_links{
+    font-size: 10px;
+}

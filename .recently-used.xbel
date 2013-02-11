@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///tmp/Penn.docx" added="2011-02-10T17:21:33Z" modified="2011-02-10T17:21:33Z" visited="2011-02-10T17:21:33Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1297358493" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/Standing%20Assignment%205.docx" added="2011-03-01T16:49:00Z" modified="2011-03-01T16:49:00Z" visited="2011-03-01T16:49:00Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1298998140" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/annotated%20bib.docx" added="2011-03-03T15:06:09Z" modified="2011-03-03T15:06:09Z" visited="2011-03-03T15:06:09Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1299164769" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/Standing%20Assignment%207.docx" added="2011-03-22T13:56:14Z" modified="2011-03-22T13:56:14Z" visited="2011-03-22T13:56:14Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1300802174" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/anbib3.docx" added="2011-03-24T14:17:20Z" modified="2011-03-24T14:17:20Z" visited="2011-03-24T14:17:20Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1300976240" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/first%20draft.doc" added="2011-03-31T17:04:18Z" modified="2011-03-31T17:04:18Z" visited="2011-03-31T17:04:18Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/msword"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1301591058" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///tmp/Lyrics.docx" added="2011-04-07T15:38:59Z" modified="2011-04-07T15:38:59Z" visited="2011-04-07T15:38:59Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <bookmark:applications>
+          <bookmark:application name="OpenOffice.org 3.1" exec="soffice %u" timestamp="1302190739" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

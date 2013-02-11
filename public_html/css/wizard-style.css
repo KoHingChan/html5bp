@@ -1,0 +1,125 @@
+.header{
+}
+
+html{
+    
+}
+
+h1{
+    line-height: 36px;
+}
+
+h2{
+    line-height: 20px;
+}
+
+h3{
+    
+}
+
+h4,h5,h6{
+    
+}
+
+body{
+    background-color: #1B72BF;
+    background-image: url(http://web.njit.edu/~kc99/network_1.png);
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: 0px 500px;
+}
+
+table{
+}
+
+.horizontalmenu{
+    list-style-type: none;
+}
+
+.horizontalmenu a{
+    background-color: #F2B705;
+    border: 1px solid;
+}
+
+.verticalmenu{
+}
+
+blockquote{
+    font-family: "verdana";
+    font-style: italic;
+    font-weight: lighter;
+}
+
+#project2{
+    border: 3px solid;
+}
+
+#banner{
+    background-color: #F2B705;
+    font-size: 90px;
+    text-align: center;
+    text-indent: 5px;
+    color: #F24405;
+}
+
+#primary_links{
+    background-color:#F2B705;
+    font-family: georgia;
+    font-size: 18px;
+}
+
+a:link{
+    color: #1B72BF;
+    text-decoration: underline;
+}
+
+a:active{
+    color: #FFD84F;
+    text-decoration: underline;
+}
+
+a:visited{
+    color: #F34405;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: #FFD84F;
+    text-decoration: overline;
+}
+
+
+#rect1{
+    
+}
+
+#left{
+    background-color: #6d93e1;
+    text-align: center;
+    font-size: 15;
+}
+
+#center{
+    background-color: #FFEB9F;
+}
+
+#center{
+    font-size: 15;
+    font-family: georgia;
+    line-height: 24px;
+    font-weight: lighter;
+    color: #F34403;
+}
+
+.homeimg{
+    max-height: 300px;
+    max-width: 300px;
+    padding: 5px;
+}
+
+#right{
+    background-color: #F2B705;
+}
+
+#footer{
+}

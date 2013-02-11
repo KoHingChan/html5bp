@@ -1,0 +1,455 @@
+/* ver. 0.0091 */
+var CorticaCircleButton = {
+	buttonWidth		: 20,
+	buttonHeight	: 20,
+	buttonSRC		: "http://adserver-static1.iweb.cortica.com/adserver/static/p/10008/dot.png",
+	bgSRC			: "http://adserver-static.iweb.cortica.com/campaigns/inimage/bgf7.png",
+	dataUrl			: 'http://ads2.iweb.cortica.com:8080/adserver/Server',
+	impressionUrl 	: "http://ads2.iweb.cortica.com:8080/adserver/mover",
+	dotClickUrl 	: "http://ads2.iweb.cortica.com:8080/adserver/inimageclick",
+    minImpressionTime : 1, //in seconds
+	requestId		: '',
+	bannerType		: 15,
+	publisherId		: 10008,
+	fontfamily		: "arial,sans-serif",
+	textsize		: 10,
+	opacity			: 9,// from 1 to 10
+	buttons			: [],
+	floaters		: [],
+	floaterH		: [50],
+	floaterW		: [180],
+	defaultH		: 120,
+	defaultW		: 270,
+	catTitle		: 40,
+	catDescription	: 81,
+	floaterBGColor	: 'grey', //black
+	floaterTxtColor	: 'white', //white
+	defaultData		: [],
+	defaultXY		: [],
+	imagesList		: [],
+	height 			: 200,
+	width 			: 190,
+	timeOutValue	: 10, 
+	/* Reporter */
+    corticaReporter : {
+        picUrl : '',
+        startTime : 0,
+        startCount : function(picUrl){
+            this.picUrl = picUrl;
+            var d = new Date();
+            this.startTime = d.getTime();
+        },
+        release : function(){
+            var d = new Date();
+            var time = d.getTime() - this.startTime;
+            if(time > CorticaCircleButton.minImpressionTime * 1000){
+                var  requester = new Image();
+                requester.src = CorticaCircleButton.impressionUrl + '?picUrl=' + this.picUrl +
+				'&time=' + time + '&pageUrl =' + escape(document.location.href) + '&reqid=' + CorticaCircleButton.requestId + '&pid=' + CorticaCircleButton.publisherId + '&btype=' + CorticaCircleButton.bannerType;
+            }
+        },
+		doclick : function(){
+			var  requester = new Image();
+			requester.src = CorticaCircleButton.dotClickUrl + '?picUrl=' + escape(this.picUrl) + '&pageUrl =' + escape(document.location.href) + 
+			'&reqid=' + CorticaCircleButton.requestId + '&pid=' + CorticaCircleButton.publisherId + '&btype=' + CorticaCircleButton.bannerType;
+        }
+    }
+	,/* Create Floater */
+    createFloater : function (index,image,indexTmp){
+		var data  = CorticaCircleButton.defaultData[image.src];
+        var f = document.createElement('DIV');
+        f.style.width		= CorticaCircleButton.floaterW[index] + 'px';
+		f.style.height		= CorticaCircleButton.floaterH[index] + 'px';
+        f.style.position	= 'absolute';
+        f.style.fontSize	= this.textsize +'px';
+        f.style.display		= 'none';
+        f.style.fontFamily	= this.fontfamily;
+        f.style.overflow	= 'hidden';
+        f.style.cursor		= 'pointer';
+        f.style.lineHeight	=  (this.textsize + 1) + 'px';
+        f.style.color		= CorticaCircleButton.floaterTxtColor;
+		f.style.background	= 'url("'+CorticaCircleButton.bgSRC+'") repeat scroll 0 0 transparent';
+        f.style.padding =  f.style.margin = 0;
+		f.setAttribute('class', 'cortica');
+		f.setAttribute('id', 'corticaF'+index+"_"+indexTmp);
+        f.innerHTML = CorticaCircleButton.createLayout(data,indexTmp,index,f.style.lineHeight);
+        f.onclick = function(){
+			var re  = new RegExp("^corticaF([0-9]+)_([0-9])", "g");
+			var m = re.exec(this.id);
+			if (m!= null && m[m.length-1]!= null){
+				var ind = m[m.length-1];
+				window.open(CorticaCircleButton.defaultData[image.src].redirectURL[ind]);
+			}
+        };
+        document.body.appendChild(f);
+        return f;
+    },
+	/* Create Layout due type */ 
+	createLayout	: function (data,indexTmp,index,divHeight){
+		var html ="";
+		var logo = "";
+		if (data.logoURL[indexTmp] && data.logoURL[indexTmp] !== "") logo = '<img src="'+data.logoURL[indexTmp]+'">';
+		
+		switch(data.layout[indexTmp]){
+			case 1: data.title[indexTmp] = CorticaCircleButton.catTitleSize(data.title[indexTmp],90);
+			data.description[indexTmp] = CorticaCircleButton.catTitleSize(data.description[indexTmp],80);
+			html = '<div style="text-align: left; color: rgb(92, 179, 255); font-size: 14px; font-weight: bold; padding: 5pt 7px 4px;line-height:110%;" class="corticaTitle">'
+			+ data.title[indexTmp] + '</div>'
+			+ '<div style="float: left; margin: 0pt; padding: 2px 4px 0pt; height: ' + divHeight + ';width:100%;">'
+			+'<div id="corticaI" class="corticaWrapper" style="float: left; margin: 0pt;padding: 2px 5px 2px 2px;">'
+			+'<img class="corticaI" style=" height: 50px; width: 50px; opacity: 10;" src="'	+ data.imageURL[indexTmp] + '"></div>'
+			+ '<div style="text-align:left;height:40px;font-size:8pt;line-height:105%;padding-right:5px;">'+ data.description[indexTmp]
+			+ '</div><div class="corticaP" style="color:#FF00FF;float:left;">'
+			+ data.price[indexTmp] + '</div><div style="padding: 0px 4pt;height:10px;"><div style="padding-left:120px;float:right;padding-right:15px;">'+logo+'</div>'+'</div>';
+			break;
+			default: data.title[indexTmp] = CorticaCircleButton.catTitleSize(data.title[indexTmp],CorticaCircleButton.catTitle); 
+			html = '<div id="corticaI" class="corticaWrapper" style="padding: 10px;float: left;margin: 0;padding: 10px 5px 0 5px;">'
+			+'<img class="corticaI" style="	height:100px;width:100px;opacity: 10;filter:alpha(opacity = 100);" src="'
+			+ data.imageURL[indexTmp]+'"></div>'
+			+ '<div class="corticaWrapper" style="float: left;margin: 0;padding: 10px 5px 0 5px;height: 27px' + ';width:'+ (CorticaCircleButton.floaterW[index] - 120) +'px;">'
+			+'<div class="corticaTitle" style="	text-align:left;color:#5CB3FF;font-style:bold;font-size:14px;font-weight: bold;padding:0 2px 2px 2px;">'
+			+ data.title[indexTmp] + '</div><br/>'
+			+ '<div style="text-align:left;height:45px;">'+ data.description[indexTmp]
+			+ '</div><div><div class="corticaP" style="color:#FF00FF;float:left;">'
+			+ data.price[indexTmp] +'</div>'+'<div style="float:right;padding-right:15px;">'+logo+'</div></div>'+'</div>';
+				break;
+		}
+		return html;
+	},
+	/* Cat title due type */
+	catTitleSize : function (title,size){
+		if (title && title.length > size)
+		{
+			title = title.substring(0,size - 4) + " ...";
+		}
+		return title;
+	},
+	/* Create Button */
+	createButton : function (index,indexTmp){
+        var b = document.createElement('IMG');
+        b.style.width		= CorticaCircleButton.buttonWidth;
+		b.style.height		= CorticaCircleButton.buttonHeight;
+        b.style.position	= 'absolute';
+        b.style.display		= 'none';
+        b.style.overflow	= 'hidden';
+        b.style.cursor		= 'pointer';
+		b.setAttribute('SRC',CorticaCircleButton.buttonSRC);
+		b.src = CorticaCircleButton.buttonSRC;
+		b.setAttribute('id', 'corticaB'+index+"_"+indexTmp);
+		b.onclick = function(){
+			var allOffset = CorticaCircleButton.getOffsetElement(this);
+			var re  = new RegExp("^corticaB([0-9]+)_([0-9])", "g");
+			var m = re.exec(this.id);
+
+			if (m!= null && m[m.length-1]!= null){
+				var ind		= m[m.length-2];
+				var indTmp	= m[m.length-1];
+				CorticaCircleButton.corticaReporter.doclick();
+				CorticaCircleButton.floaters[ind][indTmp].style.top		= (allOffset.top - CorticaCircleButton.buttonHeight - 20) + 'px';
+				CorticaCircleButton.floaters[ind][indTmp].style.left	= (allOffset.left + 18) + 'px';
+				CorticaCircleButton.floaters[ind][indTmp].style.zIndex	= '999999';
+				CorticaCircleButton.floaters[ind][indTmp].style.display = 'block';
+			}
+        };
+		document.body.appendChild(b);
+		return b;
+	},
+	applyCortica : function (data,reqID){
+		var tmp		= document.getElementsByTagName('img');
+		CorticaCircleButton.requestId = reqID;
+		var images	= []; var ind = 0;
+		// Get Images array
+		for (var img=0;img<tmp.length;img++){
+			if(CorticaCircleButton.checkImageParam(tmp[img],"jpg|png|gif","main_image")){
+				images[ind] = tmp[img];
+				ind++;
+			}
+		}
+		CorticaCircleButton.imagesList = images;
+		// Set data/Images array
+		var dataCount = CorticaCircleButton.countProperties(data);
+		if(dataCount > 0) {
+			for(var image=0;image < dataCount;image++)
+			{
+				var count = CorticaCircleButton.countProperties(data[image]['ads']);
+				for(var p=0;p< images.length;p++)
+				{
+					if ( images[p].src == unescape(data[image].imageUrl))
+					{
+						// Init Object
+						CorticaCircleButton.defaultData[images[p].src]	= {imageURL:[],title:[],description:[],price:[],redirectURL:[],logoURL:[],layout:[]};
+						CorticaCircleButton.defaultXY[images[p].src]	= {X :[],Y:[]};
+						CorticaCircleButton.floaterH[p]					= CorticaCircleButton.defaultH;
+						CorticaCircleButton.floaterW[p]					= CorticaCircleButton.defaultW;
+						var ci = 0;
+						for(var i=0;i< count;i++)  {
+							// Set data to object
+							if (data[image]['ads'][i].title && data[image]['ads'][i].description)	{
+								CorticaCircleButton.defaultData[images[p].src].imageURL[ci]	= unescape(data[image]['ads'][i].adImageUrl);
+								CorticaCircleButton.defaultXY[images[p].src].X[ci]			= data[image]['ads'][i].coordinates.x;
+								CorticaCircleButton.defaultXY[images[p].src].Y[ci]			= data[image]['ads'][i].coordinates.y;
+								
+								data[image]['ads'][i].title = corticaUrlDecode(data[image]['ads'][i].title);
+								data[image]['ads'][i].price = corticaUrlDecode(data[image]['ads'][i].price);
+								CorticaCircleButton.defaultData[images[p].src].title[ci]		= data[image]['ads'][i].title;
+								CorticaCircleButton.defaultData[images[p].src].price[ci]		= data[image]['ads'][i].price;
+								
+								if (data[image]['ads'][i].description.length > CorticaCircleButton.catDescription)
+								{
+									data[image]['ads'][i].description = data[image]['ads'][i].description.substring(0,CorticaCircleButton.catDescription - 9) + " ...";
+								}
+								CorticaCircleButton.defaultData[images[p].src].description[ci]= data[image]['ads'][i].description;
+								CorticaCircleButton.defaultData[images[p].src].redirectURL[ci]= unescape(data[image]['ads'][i].redirectURL);
+								CorticaCircleButton.defaultData[images[p].src].logoURL[ci]= unescape(data[image]['ads'][i].logoURL);
+								if (data[image]['ads'][i].layout)
+									CorticaCircleButton.defaultData[images[p].src].layout[ci] = data[image]['ads'][i].layout;
+								else
+									CorticaCircleButton.defaultData[images[p].src].layout[ci] = 1;
+								ci++;
+							}
+						}
+					}
+				}
+			}
+			var countXY = CorticaCircleButton.countProperties(CorticaCircleButton.defaultXY);
+			// Create Floaters & Buttons
+			for(var i=0;i < CorticaCircleButton.imagesList.length;i++){
+				if (countXY){
+					CorticaCircleButton.floaters[i] =[];
+					CorticaCircleButton.buttons[i]	=[];
+					if (CorticaCircleButton.defaultXY[CorticaCircleButton.imagesList[i].src])
+					{
+						for(var j=0;j<CorticaCircleButton.defaultXY[CorticaCircleButton.imagesList[i].src].X.length;j++){
+							CorticaCircleButton.floaters[i][j] = CorticaCircleButton.createFloater(i,CorticaCircleButton.imagesList[i],j);
+							CorticaCircleButton.buttons[i][j]  = CorticaCircleButton.createButton(i,j);
+						}
+					}
+				}
+			}
+			// Take Image Events
+			for(var i=0;i < images.length;i++){
+				if (countXY){
+					images[i].onmouseover= function () {
+						var allOffset = CorticaCircleButton.getOffsetElement(this);
+						for(var p=0;p<CorticaCircleButton.imagesList.length;p++){
+							if (this.src == CorticaCircleButton.imagesList[p].src){
+								if (CorticaCircleButton.defaultXY[this.src])
+								{
+									for(var j=0;j<CorticaCircleButton.defaultXY[this.src].X.length;j++){
+										if (CorticaCircleButton.defaultXY[this.src].Y[j] < 1){
+											CorticaCircleButton.buttons[p][j].style.top	= (allOffset.top  + Math.round(this.height * CorticaCircleButton.defaultXY[this.src].Y[j])) + 'px';
+											CorticaCircleButton.buttons[p][j].style.left	= (allOffset.left + Math.round(this.width  * CorticaCircleButton.defaultXY[this.src].X[j])) + 'px';
+										}
+										else{
+											CorticaCircleButton.buttons[p][j].style.top	= (allOffset.top  + CorticaCircleButton.defaultXY[this.src].Y[j]) + 'px';
+											CorticaCircleButton.buttons[p][j].style.left	= (allOffset.left + CorticaCircleButton.defaultXY[this.src].X[j]) + 'px';
+										}
+										CorticaCircleButton.buttons[p][j].style.display	= "block";
+									}
+									CorticaCircleButton.corticaReporter.startCount(this.src);
+								}
+							}
+						}
+					}
+					images[i].onmouseout = function (e) {
+						if (e == null){
+							e = event || window.event;
+							e.relatedTarget = e.relatedTarget || e.toElement;
+						}
+						var onbutton	= 0;
+						var onfloater	= 0;
+						for(var p=0;p<CorticaCircleButton.imagesList.length;p++){
+							if (this.src == CorticaCircleButton.imagesList[p].src){
+								if (CorticaCircleButton.defaultXY[this.src])
+								{
+									for(var j=0;j<CorticaCircleButton.defaultXY[this.src].X.length;j++){
+										if(!CorticaCircleButton.comparent(CorticaCircleButton.buttons[p][j],e.relatedTarget)){
+											onbutton++;
+											if(!CorticaCircleButton.comparent(CorticaCircleButton.floaters[p][j],e.relatedTarget)){
+												CorticaCircleButton.floaters[p][j].style.display	= "none";
+											}
+											else{
+												onfloater = 1;
+											}
+										}
+									}
+								}
+							}
+						}
+						if (onbutton == CorticaCircleButton.defaultXY[this.src].X.length && !onfloater){
+							for(var p=0;p<CorticaCircleButton.imagesList.length;p++){
+								if (this.src == CorticaCircleButton.imagesList[p].src){
+									for(var j=0;j<CorticaCircleButton.defaultXY[this.src].X.length;j++){
+										CorticaCircleButton.buttons[p][j].style.display	= "none";
+									}
+									CorticaCircleButton.corticaReporter.release();
+								}
+							}
+						}
+					};
+				}
+			}
+		}
+	},
+	/* */
+    comparent : function (obj,test,count){
+        if(!count){
+            count = 1;
+        }
+        if(count > 5){
+            return false;
+        }
+        if(obj == test){
+            return true;
+        }else{
+            if(!test || !test.parentNode){
+                return false;
+            }
+            return CorticaCircleButton.comparent(obj,test.parentNode,count + 1);
+        }
+    }
+    ,
+	/*	 */
+	getOffsetSum: function(elem) {
+		var top=0, left=0;
+		while(elem) {
+			top = top + parseInt(elem.offsetTop);
+			left = left + parseInt(elem.offsetLeft);
+			elem = elem.offsetParent;
+		}
+		return {top: top, left: left};
+	}
+	,
+	/*	 */
+	getOffsetRect: function(elem) {
+		// (1)
+		var box = elem.getBoundingClientRect();
+		// (2)
+		var body = document.body;
+		var docElem = document.documentElement;
+		// (3)
+		var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+		var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+		// (4)
+		var clientTop = docElem.clientTop || body.clientTop || 0;
+		var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+		// (5)
+		var top  = box.top +  scrollTop - clientTop;
+		var left = box.left + scrollLeft - clientLeft;
+		
+		return { top: Math.round(top), left: Math.round(left) };
+	}
+	,
+	/*	 */
+	getOffsetElement: function(el){
+		if (el.getBoundingClientRect){
+			return CorticaCircleButton.getOffsetRect(el);
+		}
+		else{
+			return CorticaCircleButton.getOffsetSum(el);
+		}
+	}
+	,
+	/* Check if class name exist and ID check;*/
+	hasClassName : function(objElement, strClass, strID) {
+		if (objElement.id == strID) return false;
+		if ( objElement.className ){
+			var arrList = objElement.className.split(' ');
+			var strClassUpper = strClass.toUpperCase();
+			for ( var i = 0; i < arrList.length; i++ ){
+				if ( arrList[i].toUpperCase() == strClassUpper ) {return false;}
+			}
+		}
+		return true;
+	}
+	,
+	/* check if image can be used by floater */
+	checkImageParam : function (obj, strClass, strID){
+		if (obj.id == strID) return false;
+		if (obj.height > CorticaCircleButton.height && obj.width > CorticaCircleButton.width){
+			//if (CorticaCircleButton.hasClassName(obj,strClass, strID)) return true;
+			return true;
+		}
+		return false;
+	}
+	,
+	countProperties : function(obj) {
+		var count = 0;
+		for(var prop in obj) {
+			if(obj.hasOwnProperty(prop))
+					++count;
+		}
+		return count;
+	}
+};
+/**********************************************************************/
+function CorticaJSONscriptRequest(fullUrl) {
+    this.fullUrl = fullUrl;
+    this.noCacheIE = '&noCacheIE=' + (new Date()).getTime();
+    this.headLoc = document.getElementsByTagName("head").item(0);
+    this.scriptId = 'JscriptId' + CorticaJSONscriptRequest.scriptCounter++;
+};
+CorticaJSONscriptRequest.scriptCounter = 1;
+//
+CorticaJSONscriptRequest.prototype.buildScriptTag = function () {
+    this.scriptObj = document.createElement("script");
+    this.scriptObj.setAttribute("type", "text/javascript");
+    this.scriptObj.setAttribute("charset", "utf-8");
+    this.scriptObj.setAttribute("src", this.fullUrl + this.noCacheIE);
+    this.scriptObj.setAttribute("id", this.scriptId);
+};
+CorticaJSONscriptRequest.prototype.removeScriptTag = function () {
+    this.headLoc.removeChild(this.scriptObj);
+};
+CorticaJSONscriptRequest.prototype.addScriptTag = function () {
+    this.headLoc.appendChild(this.scriptObj);
+};
+/**********************************************************************/
+function corticaInit() {
+	// Make css
+	var head = document.getElementsByTagName('head')[0],
+		style = document.createElement('style'),
+		rules = document.createTextNode('.cortica {-moz-border-radius  :10px;-webkit-border-radius :10px;border:1px solid #4CC4CF;}');
+	style.type = 'text/css';
+	if(style.styleSheet)
+		style.styleSheet.cssText = rules.nodeValue;
+	else style.appendChild(rules);
+	head.appendChild(style);
+
+    // If function was called going out
+	if (arguments.callee.done) return;
+	var url = CorticaCircleButton.dataUrl + '?btype=' + CorticaCircleButton.bannerType + '&rid=' + CorticaCircleButton.publisherId + '&ref=' + escape(document.location.href) + '&imgs=';//escape(document.location.href)
+	var images = document.getElementsByTagName('img');
+	var lsRegExp = /\+/g;
+	for (var i=0;i<images.length;i++) {
+                 var imageUrl = escape(images[i].src);
+                 imageUrl = imageUrl.replace(lsRegExp, encodeURIComponent('+'));
+                 if(CorticaCircleButton.checkImageParam(images[i],"jpg|png|gif","main_image")) {url += imageUrl + "|";}
+	}
+	
+	var REC = new CorticaJSONscriptRequest(url);
+	REC.buildScriptTag();
+	REC.addScriptTag();
+
+    // Set Flag, for prevent double calling function
+    arguments.callee.done = true;
+	alreadyrunflag=1;
+};
+function corticaUrlDecode(psEncodeString)
+{
+  var lsRegExp = /\+/g; 											/* Create a regular expression to search all +s in the string */
+  return unescape(String(psEncodeString).replace(lsRegExp, " ")); 	/* Return the decoded string */
+};
+function corticaTimeOut(){
+	window.setTimeout(function(){corticaInit();}, CorticaCircleButton.timeOutValue);
+};
+if (navigator.userAgent.match(/Safari/i) || (document.all && !window.opera)) {
+    document.__Cortica_loaderInterval = window.setInterval(function() {
+				if(document.readyState == "loaded" || document.readyState == "complete") {
+								window.clearInterval(document.__Cortica_loaderInterval);
+								corticaTimeOut();/*corticaInit();*/
+				}}, 10);
+} else if (document.addEventListener) {
+    //document.addEventListener("DOMContentLoaded", corticaInit, false);/* For Mozilla/Firefox/Opera 9 */
+	document.addEventListener("DOMContentLoaded", corticaTimeOut, false);
+}

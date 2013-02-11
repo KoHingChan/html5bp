@@ -1,0 +1,50 @@
+#wrapper{
+    width: 960px;
+    padding: 24px;
+    padding-top:0px;
+    min-height: 593px;
+    background-color: blue;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+#header{
+    height: 96px;
+    padding: 11px;
+    background-color: red;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: georgia, times, serif;
+    font-weight: normal;
+}
+
+#block1{
+    width: 545px;
+    padding:24px;
+    min-height: 427px;
+    background-color: brown;
+    float: left;
+}
+
+#block1 style{
+    font-family: georgia, times, sans-serif;
+    font: 12;
+    line-height: 21;
+}
+
+#block2{
+    width: 329px;
+    padding:19px;
+    min-height: 437px;
+    background-color: green;
+    float: left;
+    
+}
+
+#block2 style{
+    font-family: Georgia;
+    font: 18;
+    line-height: 26;
+}
